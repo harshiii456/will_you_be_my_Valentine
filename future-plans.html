@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Future Plans 🌟</title>
+    <link rel="stylesheet" href="./public/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </head>
+  <body>
+    <div class="floating-hearts"></div>
+    <div class="sparkles"></div>
+    
+    <!-- Navigation Menu -->
+    <nav class="navigation">
+      <div class="nav-container">
+        <h2 class="nav-title">💕 Our Love Story</h2>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="love-letters.html" class="nav-link">Love Letters</a></li>
+          <li><a href="memories.html" class="nav-link">Memories</a></li>
+          <li><a href="future-plans.html" class="nav-link active">Future Plans</a></li>
+          <li><a href="love-quiz.html" class="nav-link">Love Quiz</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="page-title">🌈 Our Future Together</h1>
+      <p class="page-subtitle">Dreaming of forever with you</p>
+      
+      <div class="dreams-grid">
+        <div class="dream-card">
+          <div class="dream-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <h3>Our First Home</h3>
+          <p>A cozy place where we'll build our life together, filled with love, laughter, and countless memories.</p>
+          <div class="dream-details">
+            <ul>
+              <li>🏡 A garden for you</li>
+              <li>🛋️ Movie nights on the couch</li>
+              <li>🍳 Cooking together</li>
+              <li>❤️ Making it our sanctuary</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dream-card">
+          <div class="dream-icon">
+            <i class="fas fa-plane"></i>
+          </div>
+          <h3>Travel Adventures</h3>
+          <p>Exploring the world hand in hand, collecting memories and experiences that will last a lifetime.</p>
+          <div class="dream-details">
+            <ul>
+              <li>🇮🇹 Romantic Italy</li>
+              <li>🇯🇵 Cherry blossoms in Japan</li>
+              <li>🇫🇷 Paris in spring</li>
+              <li>🏝️ Tropical paradise getaway</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dream-card">
+          <div class="dream-icon">
+            <i class="fas fa-ring"></i>
+          </div>
+          <h3>Forever & Always</h3>
+          <p>The day I promise to love you for all eternity, surrounded by everyone we love.</p>
+          <div class="dream-details">
+            <ul>
+              <li>💍 The perfect proposal</li>
+              <li>👰🤵 Our wedding day</li>
+              <li>🎉 Dancing the night away</li>
+              <li>💞 Starting our forever</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dream-card">
+          <div class="dream-icon">
+            <i class="fas fa-baby"></i>
+          </div>
+          <h3>Growing Our Family</h3>
+          <p>Watching our love grow into a beautiful family, teaching our children about love and kindness.</p>
+          <div class="dream-details">
+            <ul>
+              <li>👶 First steps together</li>
+              <li>🎈 Birthday celebrations</li>
+              <li>📚 Bedtime stories</li>
+              <li>🏖️ Family vacations</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dream-card">
+          <div class="dream-icon">
+            <i class="fas fa-heart-pulse"></i>
+          </div>
+          <h3>Growing Old Together</h3>
+          <p>Still holding hands when we're 80, still making each other laugh, still deeply in love.</p>
+          <div class="dream-details">
+            <ul>
+              <li>🦋 Golden years together</li>
+              <li>☕ Morning coffee rituals</li>
+              <li>📖 Reading side by side</li>
+              <li>💕 Love that never fades</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dream-card">
+          <div class="dream-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Shared Dreams</h3>
+          <p>Supporting each other's goals and celebrating every success, big or small.</p>
+          <div class="dream-details">
+            <ul>
+              <li>🎯 Your career achievements</li>
+              <li>🌟 My personal growth</li>
+              <li>🤝 Team goals together</li>
+              <li>🏆 Celebrating every win</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bucket-list-section">
+        <h2>📝 Our Love Bucket List</h2>
+        <div class="bucket-list">
+          <div class="bucket-item">
+            <input type="checkbox" id="item1">
+            <label for="item1">Watch sunrise together on a mountain top</label>
+          </div>
+          <div class="bucket-item">
+            <input type="checkbox" id="item2">
+            <label for="item2">Learn to dance in the rain</label>
+          </div>
+          <div class="bucket-item">
+            <input type="checkbox" id="item3">
+            <label for="item3">Write our love story</label>
+          </div>
+          <div class="bucket-item">
+            <input type="checkbox" id="item4">
+            <label for="item4">Adopt a pet together</label>
+          </div>
+          <div class="bucket-item">
+            <input type="checkbox" id="item5">
+            <label for="item5">Go on a road trip with no destination</label>
+          </div>
+          <div class="bucket-item">
+            <input type="checkbox" id="item6">
+            <label for="item6">Build a treehouse</label>
+          </div>
+        </div>
+        
+        <div class="add-bucket-item">
+          <input type="text" id="newBucketItem" placeholder="Add your dream...">
+          <button onclick="addBucketItem()" class="add-bucket-btn">
+            <i class="fas fa-plus"></i> Add Dream
+          </button>
+        </div>
+      </div>
+
+      <div class="love-promise">
+        <h2>💭 My Promise to You</h2>
+        <div class="promise-content">
+          <p>I promise to always choose you, every single day.</p>
+          <p>I promise to support your dreams and celebrate your victories.</p>
+          <p>I promise to hold your hand through every storm.</p>
+          <p>I promise to make you laugh when you want to cry.</p>
+          <p>I promise to love you fiercely and without conditions.</p>
+          <p>I promise that my future will always have you in it.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Initialize floating hearts and sparkles
+      function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 6 + 's';
+        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        document.querySelector('.floating-hearts').appendChild(heart);
+        
+        setTimeout(() => {
+          heart.remove();
+        }, 6000);
+      }
+
+      function createSparkle() {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 3 + 's';
+        document.querySelector('.sparkles').appendChild(sparkle);
+        
+        setTimeout(() => {
+          sparkle.remove();
+        }, 3000);
+      }
+
+      setInterval(createHeart, 2000);
+      setInterval(createSparkle, 500);
+
+      // Bucket list functionality
+      function addBucketItem() {
+        const input = document.getElementById('newBucketItem');
+        const bucketList = document.querySelector('.bucket-list');
+        
+        if (input.value.trim()) {
+          const itemId = 'item' + Date.now();
+          const newItem = document.createElement('div');
+          newItem.className = 'bucket-item';
+          newItem.innerHTML = `
+            <input type="checkbox" id="${itemId}">
+            <label for="${itemId}">${input.value}</label>
+          `;
+          bucketList.appendChild(newItem);
+          input.value = '';
+        }
+      }
+
+      // Add celebration when bucket items are checked
+      document.addEventListener('change', function(e) {
+        if (e.target.type === 'checkbox' && e.target.checked) {
+          createCelebrationHearts();
+        }
+      });
+
+      function createCelebrationHearts() {
+        for (let i = 0; i < 10; i++) {
+          setTimeout(() => {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💕';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = '50%';
+            heart.style.fontSize = '25px';
+            heart.style.zIndex = '1000';
+            heart.style.animation = 'float 2s ease-out forwards';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 2000);
+          }, i * 100);
+        }
+      }
+    </script>
+
+    <style>
+      .page-title {
+        color: white;
+        font-size: 3em;
+        margin-bottom: 10px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+      }
+
+      .page-subtitle {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2em;
+        margin-bottom: 40px;
+        font-style: italic;
+      }
+
+      .dreams-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .dream-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .dream-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: rotate(45deg);
+        transition: all 0.5s ease;
+        opacity: 0;
+      }
+
+      .dream-card:hover::before {
+        animation: shimmer 0.5s ease;
+      }
+
+      @keyframes shimmer {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+      }
+
+      .dream-card:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .dream-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        background: linear-gradient(45deg, #ff6b6b, #feca57);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .dream-icon i {
+        font-size: 2em;
+        color: white;
+      }
+
+      .dream-card h3 {
+        color: white;
+        margin-bottom: 15px;
+        font-size: 1.5em;
+      }
+
+      .dream-card p {
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .dream-details ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .dream-details li {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 8px;
+        font-size: 0.95em;
+      }
+
+      .bucket-list-section {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 40px;
+      }
+
+      .bucket-list-section h2 {
+        color: white;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .bucket-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
+      .bucket-item {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .bucket-item:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .bucket-item input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin-right: 15px;
+        cursor: pointer;
+      }
+
+      .bucket-item label {
+        color: white;
+        cursor: pointer;
+        font-size: 1.1em;
+        flex: 1;
+      }
+
+      .add-bucket-item {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      #newBucketItem {
+        padding: 12px 20px;
+        border-radius: 25px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1em;
+        flex: 1;
+        max-width: 300px;
+      }
+
+      #newBucketItem::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .add-bucket-btn {
+        background: linear-gradient(45deg, #ff6b6b, #feca57);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .add-bucket-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+      }
+
+      .love-promise {
+        background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(254, 202, 87, 0.2));
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .love-promise h2 {
+        color: white;
+        margin-bottom: 30px;
+        font-size: 2em;
+      }
+
+      .promise-content p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.1em;
+        line-height: 1.8;
+        margin-bottom: 15px;
+        font-style: italic;
+      }
+
+      @media (max-width: 768px) {
+        .dreams-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .bucket-list {
+          grid-template-columns: 1fr;
+        }
+        
+        .add-bucket-item {
+          flex-direction: column;
+          align-items: center;
+        }
+        
+        #newBucketItem {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </body>
+</html>

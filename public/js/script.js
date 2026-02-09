@@ -1,0 +1,282 @@
+const answers_no = {
+    english: [
+        "No",
+        "Are you sure?",
+        "Are you really sure??",
+        "Are you really realy sure???",
+        "Think again?",
+        "Don't believe in second chances?",
+        "Why are you being so cold?",
+        "Maybe we can talk about it?",
+        "I am not going to ask again!",
+        "Ok now this is hurting my feelings!",
+        "You are now just being mean!",
+        "Why are you doing this to me?",
+        "Please give me a chance!",
+        "I am begging you to stop!",
+        "Ok, Let's just start over.."
+    ],
+    french: [
+        "Non",
+        "Tu es sûr ?",
+        "Tu es vraiment sûr ??",
+        "Tu es vraiment vraiment sûr ???",
+        "Réfléchis encore?",
+        "Tu ne crois pas aux deuxièmes chances ?",
+        "Pourquoi tu es si froid?",
+        "Peut-être, on peut en parler ?",
+        "Je ne vais pas demander encore une fois!",
+        "D'accord, maintenant ca me fait mal!",
+        "Tu es juste méchant!",
+        "Pourquoi tu me fais ça?",
+        "Donnez-moi une chance plz!",
+        "Je te supplie d'arrêter!",
+        "D'accord, recommençons.."
+    ],
+    thai: [
+        "ไม่อ่ะ",
+        "แน่ใจจริงๆหรอคะ?",
+        "แน่ใจจริงๆ จริงๆนะคะ?",
+        "อย่าบอกนะว่านี่แน่ใจสุดๆแล้วจริงๆ ?",
+        "ลองคิดดูอีกทีหน่อยสิคะ..",
+        "ขอโอกาศที่สองทีค่ะ..",
+        "อย่าเย็นชาสิคะ กระซิกๆ",
+        "ขอร้องนะคะ",
+        "น้าาาๆๆๆๆๆ",
+        "เราจะร้องไห้เอานะ กระซิกๆ",
+        "จะเอางี้ๆจริงหรอคะ",
+        "ฮือออออ",
+        "ขอโอกาศครั้งที่สองที่ค่ะ!",
+        "ขอร้องละค่าาา",
+        "โอเคค่ะ.. งั้นเริ่มใหม่ !"
+    ]
+};
+
+answers_yes = {
+    "english": "Yes",
+    "french": "Oui",
+    "Thailand": "เย่ คืนดีกันแล้วน้า"
+}
+
+let language = "english"; // Default language is English
+const no_button = document.getElementById('no-button');
+const yes_button = document.getElementById('yes-button');
+const music_toggle = document.getElementById('music-toggle');
+const love_song = document.getElementById('love-song');
+const volume_slider = document.getElementById('volume-slider');
+let i = 1;
+let size = 50;
+let clicks = 0;
+let isPlaying = false;
+
+// Set initial volume
+love_song.volume = 0.5;
+
+// Create floating hearts
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = '❤️';
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.animationDelay = Math.random() * 6 + 's';
+    heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+    document.querySelector('.floating-hearts').appendChild(heart);
+    
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+// Create sparkles
+function createSparkle() {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.style.left = Math.random() * 100 + '%';
+    sparkle.style.top = Math.random() * 100 + '%';
+    sparkle.style.animationDelay = Math.random() * 3 + 's';
+    document.querySelector('.sparkles').appendChild(sparkle);
+    
+    setTimeout(() => {
+        sparkle.remove();
+    }, 3000);
+}
+
+// Countdown to Valentine's Day
+function updateCountdown() {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    let valentine = new Date(currentYear, 1, 14); // February 14
+    
+    if (now > valentine) {
+        valentine = new Date(currentYear + 1, 1, 14);
+    }
+    
+    const diff = valentine - now;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    
+    document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m`;
+}
+
+// Initialize animations
+setInterval(createHeart, 2000);
+setInterval(createSparkle, 500);
+setInterval(updateCountdown, 60000);
+updateCountdown();
+
+// Create initial hearts and sparkles
+for (let i = 0; i < 5; i++) {
+    setTimeout(createHeart, i * 1000);
+}
+for (let i = 0; i < 10; i++) {
+    setTimeout(createSparkle, i * 200);
+}
+
+no_button.addEventListener('click', () => {
+    // Change banner source
+    let banner = document.getElementById('banner');
+    if (clicks === 0) {
+        banner.src = "public/images/no.gif";
+        refreshBanner();
+    }
+    clicks++;
+    // increase button height and width gradually to 250px
+    const sizes = [40, 50, 30, 35, 45]
+    const random = Math.floor(Math.random() * sizes.length);
+    size += sizes[random]
+    yes_button.style.height = `${size}px`;
+    yes_button.style.width = `${size}px`;
+    let total = answers_no[language].length;
+    // change button text
+    if (i < total - 1) {
+        no_button.innerHTML = answers_no[language][i];
+        i++;
+    } else if (i === total - 1) {
+        alert(answers_no[language][i]);
+        i = 1;
+        no_button.innerHTML = answers_no[language][0];
+        yes_button.innerHTML = answers_yes[language];
+        yes_button.style.height = "50px";
+        yes_button.style.width = "50px";
+        size = 50;
+    }
+});
+
+yes_button.addEventListener('click', () => {
+    // change banner gif path
+    let banner = document.getElementById('banner');
+    banner.src = "public/images/yes.gif";
+    refreshBanner();
+    // hide buttons div
+    let buttons = document.getElementsByClassName('buttons')[0];
+    buttons.style.display = "none";
+    // show message div
+    let message = document.getElementsByClassName('message')[0];
+    message.style.display = "block";
+    
+    // Show love gallery
+    let gallery = document.getElementById('love-gallery');
+    gallery.style.display = "block";
+    
+    // Auto-play romantic music when he says yes!
+    if (!isPlaying) {
+        love_song.play().catch(error => {
+            console.log('Auto-play failed:', error);
+        });
+        music_toggle.innerHTML = '<i class="fas fa-pause"></i> Pause Our Song';
+        isPlaying = true;
+    }
+    
+    // Create celebration hearts
+    for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = '50%';
+            heart.style.fontSize = '30px';
+            heart.style.color = '#ff6b6b';
+            heart.style.zIndex = '1000';
+            heart.style.animation = 'float 3s ease-out forwards';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 3000);
+        }, i * 100);
+    }
+});
+
+function refreshBanner() {
+    // Reload banner gif to force load  
+    let banner = document.getElementById('banner');
+    let src = banner.src;
+    banner.src = '';
+    banner.src = src;
+}
+
+function changeLanguage() {
+    const selectElement = document.getElementById("language-select");
+    const selectedLanguage = selectElement.value;
+    language = selectedLanguage;
+
+    // Update question heading
+    const questionHeading = document.getElementById("question-heading");
+    if (language === "french") {
+        questionHeading.textContent = "Tu veux être mon valentin?";
+    } else if (language === "thai") {
+        questionHeading.textContent = "คืนดีกับเราได้อ่ะป่าว?";
+    } else {
+        questionHeading.textContent = "Will you be my valentine?";
+    }
+
+    // Reset yes button text
+    yes_button.innerHTML = answers_yes[language];
+
+    // Reset button text to first in the new language
+    if (clicks === 0) {
+        no_button.innerHTML = answers_no[language][0];
+    } else {
+        no_button.innerHTML = answers_no[language][clicks];
+    }
+
+    // Update success message
+    const successMessage = document.getElementById("success-message");
+    if (language === "french") {
+        successMessage.textContent = "Yepppie, à bientôt :3";
+    } else if (language === "thai") {
+        successMessage.textContent = "ฮูเร่ คืนดีกันแล้วน้า :3";
+    } else {
+        successMessage.textContent = "Yepppie, see you sooonnn :3";
+    }
+}
+
+// Music player functionality
+music_toggle.addEventListener('click', () => {
+    if (!isPlaying) {
+        love_song.play().then(() => {
+            music_toggle.innerHTML = '<i class="fas fa-pause"></i> Pause Our Song';
+            isPlaying = true;
+        }).catch(error => {
+            console.log('Audio play failed:', error);
+            // Fallback to a different audio source
+            love_song.src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
+            love_song.play().then(() => {
+                music_toggle.innerHTML = '<i class="fas fa-pause"></i> Pause Our Song';
+                isPlaying = true;
+            }).catch(err => {
+                console.log('Fallback audio also failed:', err);
+            });
+        });
+    } else {
+        love_song.pause();
+        music_toggle.innerHTML = '<i class="fas fa-music"></i> Play Our Song';
+        isPlaying = false;
+    }
+});
+
+// Volume control functionality
+volume_slider.addEventListener('input', (e) => {
+    const volume = e.target.value / 100;
+    love_song.volume = volume;
+});

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Love Letters 💕</title>
+    <link rel="stylesheet" href="./public/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </head>
+  <body>
+    <div class="floating-hearts"></div>
+    <div class="sparkles"></div>
+    
+    <!-- Navigation Menu -->
+    <nav class="navigation">
+      <div class="nav-container">
+        <h2 class="nav-title">💕 Our Love Story</h2>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="love-letters.html" class="nav-link active">Love Letters</a></li>
+          <li><a href="memories.html" class="nav-link">Memories</a></li>
+          <li><a href="future-plans.html" class="nav-link">Future Plans</a></li>
+          <li><a href="love-quiz.html" class="nav-link">Love Quiz</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="page-title">💌 Love Letters</h1>
+      <p class="page-subtitle">Words from my heart to yours</p>
+      
+      <div class="letters-container">
+        <div class="letter-card" onclick="openLetter('letter1')">
+          <div class="letter-preview">
+            <i class="fas fa-envelope-open-text"></i>
+            <h3>My First Love Letter</h3>
+            <p>The day I knew you were special...</p>
+          </div>
+        </div>
+        
+        <div class="letter-card" onclick="openLetter('letter2')">
+          <div class="letter-preview">
+            <i class="fas fa-heart"></i>
+            <h3>You Complete Me</h3>
+            <p>Why you're my missing piece...</p>
+          </div>
+        </div>
+        
+        <div class="letter-card" onclick="openLetter('letter3')">
+          <div class="letter-preview">
+            <i class="fas fa-star"></i>
+            <h3>Dreams of Us</h3>
+            <p>Our future together in my dreams...</p>
+          </div>
+        </div>
+        
+        <div class="letter-card" onclick="openLetter('letter4')">
+          <div class="letter-preview">
+            <i class="fas fa-infinity"></i>
+            <h3>Eternal Love</h3>
+            <p>Why my love will never fade...</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Letter Modal -->
+      <div id="letterModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeLetter()">&times;</span>
+          <div id="letterContent"></div>
+        </div>
+      </div>
+      
+      <div class="write-letter-section">
+        <h2>✍️ Write Your Own Love Letter</h2>
+        <textarea id="loveLetterInput" placeholder="Dear my love..."></textarea>
+        <button onclick="saveLetter()" class="save-btn">
+          <i class="fas fa-save"></i> Save Letter
+        </button>
+        <div id="savedLetters" class="saved-letters"></div>
+      </div>
+    </div>
+
+    <script>
+      // Initialize floating hearts and sparkles
+      function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 6 + 's';
+        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        document.querySelector('.floating-hearts').appendChild(heart);
+        
+        setTimeout(() => {
+          heart.remove();
+        }, 6000);
+      }
+
+      function createSparkle() {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 3 + 's';
+        document.querySelector('.sparkles').appendChild(sparkle);
+        
+        setTimeout(() => {
+          sparkle.remove();
+        }, 3000);
+      }
+
+      setInterval(createHeart, 2000);
+      setInterval(createSparkle, 500);
+
+      // Letter content
+      const letters = {
+        letter1: {
+          title: "My First Love Letter",
+          content: `
+            <h2>My Dearest Love,</h2>
+            <p>I remember the first day I saw you like it was yesterday. Your smile lit up the room, and in that moment, I knew my life would never be the same.</p>
+            <p>Every day with you feels like a blessing. Your kindness, your laughter, your beautiful soul - everything about you makes me want to be a better person.</p>
+            <p>Thank you for walking into my life and making it complete. I love you more than words can express.</p>
+            <p>Forever yours,<br>Your Valentine ❤️</p>
+          `
+        },
+        letter2: {
+          title: "You Complete Me",
+          content: `
+            <h2>To My Other Half,</h2>
+            <p>Before you, I was like a puzzle with missing pieces. You came into my life and suddenly everything made sense.</p>
+            <p>Your strengths complement my weaknesses, your dreams inspire mine, and your love gives me courage to face any challenge.</p>
+            <p>Together, we're not just two people - we're a team, a partnership, a love story written in the stars.</p>
+            <p>I can't imagine my life without you. You are my today and all of my tomorrows.</p>
+            <p>All my love,<br>Forever yours 💕</p>
+          `
+        },
+        letter3: {
+          title: "Dreams of Us",
+          content: `
+            <h2>My Dream Come True,</h2>
+            <p>Every night I dream of our future together - lazy Sunday mornings, adventures around the world, growing old together on a porch swing.</p>
+            <p>I dream of our first home, our children's laughter, the challenges we'll overcome, and the victories we'll celebrate.</p>
+            <p>But most of all, I dream of waking up next to you every day for the rest of my life.</p>
+            <p>You're not just my dream - you're my reality, and that's better than any dream I could have imagined.</p>
+            <p>Dreaming of you always,<br>Your love 🌟</p>
+          `
+        },
+        letter4: {
+          title: "Eternal Love",
+          content: `
+            <h2>My Eternal Love,</h2>
+            <p>Love isn't just a feeling - it's a choice I make every single day. And I choose you, today and forever.</p>
+            <p>My love for you doesn't depend on circumstances or feelings. It's rooted in something deeper - in the very essence of who you are and who we are together.</p>
+            <p>Time may pass, seasons may change, but one thing will remain constant: my love for you.</p>
+            <p>You are my past, my present, and my future. You are my always.</p>
+            <p>Eternally yours,<br>Your Valentine ∞</p>
+          `
+        }
+      };
+
+      function openLetter(letterId) {
+        const modal = document.getElementById('letterModal');
+        const content = document.getElementById('letterContent');
+        content.innerHTML = letters[letterId].content;
+        modal.style.display = 'block';
+      }
+
+      function closeLetter() {
+        document.getElementById('letterModal').style.display = 'none';
+      }
+
+      function saveLetter() {
+        const input = document.getElementById('loveLetterInput');
+        const savedLetters = document.getElementById('savedLetters');
+        
+        if (input.value.trim()) {
+          const letterDiv = document.createElement('div');
+          letterDiv.className = 'saved-letter';
+          letterDiv.innerHTML = `
+            <p>${input.value}</p>
+            <small>Written with love on ${new Date().toLocaleDateString()}</small>
+          `;
+          savedLetters.appendChild(letterDiv);
+          input.value = '';
+        }
+      }
+
+      // Close modal when clicking outside
+      window.onclick = function(event) {
+        const modal = document.getElementById('letterModal');
+        if (event.target == modal) {
+          modal.style.display = 'none';
+        }
+      }
+    </script>
+
+    <style>
+      .page-title {
+        color: white;
+        font-size: 3em;
+        margin-bottom: 10px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+      }
+
+      .page-subtitle {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2em;
+        margin-bottom: 40px;
+        font-style: italic;
+      }
+
+      .letters-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .letter-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .letter-card:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      }
+
+      .letter-preview i {
+        font-size: 3em;
+        color: #ff6b6b;
+        margin-bottom: 15px;
+      }
+
+      .letter-preview h3 {
+        color: white;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .letter-preview p {
+        color: rgba(255, 255, 255, 0.8);
+        font-style: italic;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .modal-content {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        margin: 5% auto;
+        padding: 40px;
+        border-radius: 20px;
+        width: 80%;
+        max-width: 600px;
+        position: relative;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .close {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        color: white;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover {
+        color: #ff6b6b;
+      }
+
+      .modal-content h2 {
+        color: white;
+        margin-bottom: 20px;
+      }
+
+      .modal-content p {
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.8;
+        margin-bottom: 15px;
+        font-size: 1.1em;
+      }
+
+      .write-letter-section {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        margin-top: 40px;
+      }
+
+      .write-letter-section h2 {
+        color: white;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      #loveLetterInput {
+        width: 100%;
+        height: 150px;
+        padding: 20px;
+        border-radius: 15px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1.1em;
+        resize: vertical;
+        margin-bottom: 20px;
+      }
+
+      #loveLetterInput::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .save-btn {
+        background: linear-gradient(45deg, #ff6b6b, #feca57);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .save-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+      }
+
+      .saved-letters {
+        margin-top: 30px;
+      }
+
+      .saved-letter {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 15px;
+      }
+
+      .saved-letter p {
+        color: white;
+        margin-bottom: 10px;
+      }
+
+      .saved-letter small {
+        color: rgba(255, 255, 255, 0.7);
+        font-style: italic;
+      }
+
+      @media (max-width: 768px) {
+        .modal-content {
+          width: 95%;
+          margin: 10% auto;
+          padding: 20px;
+        }
+        
+        .letters-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </body>
+</html>

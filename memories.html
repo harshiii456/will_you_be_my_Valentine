@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Memories 💕</title>
+    <link rel="stylesheet" href="./public/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </head>
+  <body>
+    <div class="floating-hearts"></div>
+    <div class="sparkles"></div>
+    
+    <!-- Navigation Menu -->
+    <nav class="navigation">
+      <div class="nav-container">
+        <h2 class="nav-title">💕 Our Love Story</h2>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="love-letters.html" class="nav-link">Love Letters</a></li>
+          <li><a href="memories.html" class="nav-link active">Memories</a></li>
+          <li><a href="future-plans.html" class="nav-link">Future Plans</a></li>
+          <li><a href="love-quiz.html" class="nav-link">Love Quiz</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="page-title">📸 Our Memories</h1>
+      <p class="page-subtitle">Every moment with you is precious</p>
+      
+      <div class="memory-timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">First Meeting</div>
+          <div class="timeline-content">
+            <div class="memory-card">
+              <i class="fas fa-heart"></i>
+              <h3>The Day We Met</h3>
+              <p>I'll never forget the first time I saw you. My heart skipped a beat, and I knew something special was about to begin.</p>
+              <div class="memory-placeholder">
+                <i class="fas fa-camera"></i>
+                <p>Add your photo here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">First Date</div>
+          <div class="timeline-content">
+            <div class="memory-card">
+              <i class="fas fa-coffee"></i>
+              <h3>Our First Date</h3>
+              <p>Coffee, laughter, and endless conversation. Time stood still as I got lost in your eyes and your beautiful smile.</p>
+              <div class="memory-placeholder">
+                <i class="fas fa-camera"></i>
+                <p>Add your photo here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">First Kiss</div>
+          <div class="timeline-content">
+            <div class="memory-card">
+              <i class="fas fa-kiss-wink-heart"></i>
+              <h3>Magic Moment</h3>
+              <p>The world disappeared when our lips first met. Fireworks, butterflies, and a love that would last forever.</p>
+              <div class="memory-placeholder">
+                <i class="fas fa-camera"></i>
+                <p>Add your photo here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Adventures</div>
+          <div class="timeline-content">
+            <div class="memory-card">
+              <i class="fas fa-map-marked-alt"></i>
+              <h3>Our Adventures</h3>
+              <p>From road trips to quiet evenings, every adventure with you is my favorite. Life is better when we're exploring together.</p>
+              <div class="memory-placeholder">
+                <i class="fas fa-camera"></i>
+                <p>Add your photo here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Everyday Love</div>
+          <div class="timeline-content">
+            <div class="memory-card">
+              <i class="fas fa-home"></i>
+              <h3>Simple Moments</h3>
+              <p>It's not just the big moments, but the simple everyday things - cooking together, movie nights, just being with you.</p>
+              <div class="memory-placeholder">
+                <i class="fas fa-camera"></i>
+                <p>Add your photo here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="add-memory-section">
+        <h2>✨ Add Your Memory</h2>
+        <div class="memory-form">
+          <input type="text" id="memoryTitle" placeholder="Memory title...">
+          <textarea id="memoryDescription" placeholder="Describe this special moment..."></textarea>
+          <div class="photo-upload">
+            <label for="photoInput" class="upload-btn">
+              <i class="fas fa-upload"></i> Upload Photo
+            </label>
+            <input type="file" id="photoInput" accept="image/*" style="display: none;">
+          </div>
+          <button onclick="addMemory()" class="add-btn">
+            <i class="fas fa-plus"></i> Add Memory
+          </button>
+        </div>
+        <div id="customMemories" class="custom-memories"></div>
+      </div>
+    </div>
+
+    <script>
+      // Initialize floating hearts and sparkles
+      function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 6 + 's';
+        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        document.querySelector('.floating-hearts').appendChild(heart);
+        
+        setTimeout(() => {
+          heart.remove();
+        }, 6000);
+      }
+
+      function createSparkle() {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 3 + 's';
+        document.querySelector('.sparkles').appendChild(sparkle);
+        
+        setTimeout(() => {
+          sparkle.remove();
+        }, 3000);
+      }
+
+      setInterval(createHeart, 2000);
+      setInterval(createSparkle, 500);
+
+      // Memory functionality
+      let customMemories = [];
+
+      function addMemory() {
+        const title = document.getElementById('memoryTitle').value;
+        const description = document.getElementById('memoryDescription').value;
+        
+        if (title.trim() && description.trim()) {
+          const memory = {
+            title: title,
+            description: description,
+            date: new Date().toLocaleDateString(),
+            id: Date.now()
+          };
+          
+          customMemories.push(memory);
+          displayCustomMemories();
+          
+          // Clear form
+          document.getElementById('memoryTitle').value = '';
+          document.getElementById('memoryDescription').value = '';
+        }
+      }
+
+      function displayCustomMemories() {
+        const container = document.getElementById('customMemories');
+        container.innerHTML = '';
+        
+        customMemories.forEach(memory => {
+          const memoryDiv = document.createElement('div');
+          memoryDiv.className = 'custom-memory';
+          memoryDiv.innerHTML = `
+            <div class="memory-card">
+              <i class="fas fa-star"></i>
+              <h3>${memory.title}</h3>
+              <p>${memory.description}</p>
+              <small>Added on ${memory.date}</small>
+            </div>
+          `;
+          container.appendChild(memoryDiv);
+        });
+      }
+
+      // Photo upload handling
+      document.getElementById('photoInput').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          console.log('Photo selected:', file.name);
+          // In a real application, you would upload and display the photo
+        }
+      });
+    </script>
+
+    <style>
+      .page-title {
+        color: white;
+        font-size: 3em;
+        margin-bottom: 10px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+      }
+
+      .page-subtitle {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2em;
+        margin-bottom: 40px;
+        font-style: italic;
+      }
+
+      .memory-timeline {
+        position: relative;
+        margin-bottom: 50px;
+      }
+
+      .memory-timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(to bottom, #ff6b6b, #feca57);
+        transform: translateX(-50%);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 50px;
+      }
+
+      .timeline-date {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(45deg, #ff6b6b, #feca57);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-weight: bold;
+        z-index: 10;
+        white-space: nowrap;
+      }
+
+      .timeline-content {
+        width: 45%;
+        margin-left: 5%;
+      }
+
+      .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 50%;
+      }
+
+      .memory-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .memory-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      }
+
+      .memory-card i {
+        font-size: 3em;
+        color: #ff6b6b;
+        margin-bottom: 15px;
+      }
+
+      .memory-card h3 {
+        color: white;
+        margin-bottom: 15px;
+        font-size: 1.5em;
+      }
+
+      .memory-card p {
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .memory-placeholder {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px dashed rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        padding: 40px;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .memory-placeholder:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: #ff6b6b;
+      }
+
+      .memory-placeholder i {
+        font-size: 2em;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 10px;
+      }
+
+      .memory-placeholder p {
+        color: rgba(255, 255, 255, 0.7);
+        margin: 0;
+      }
+
+      .add-memory-section {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        margin-top: 40px;
+      }
+
+      .add-memory-section h2 {
+        color: white;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .memory-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      #memoryTitle {
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1.1em;
+      }
+
+      #memoryDescription {
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1.1em;
+        min-height: 100px;
+        resize: vertical;
+      }
+
+      #memoryTitle::placeholder,
+      #memoryDescription::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .photo-upload {
+        text-align: center;
+      }
+
+      .upload-btn {
+        display: inline-block;
+        background: linear-gradient(45deg, #4ecdc4, #44a08d);
+        color: white;
+        padding: 15px 30px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .upload-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(78, 205, 196, 0.6);
+      }
+
+      .add-btn {
+        background: linear-gradient(45deg, #ff6b6b, #feca57);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        align-self: center;
+      }
+
+      .add-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+      }
+
+      .custom-memories {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .custom-memory .memory-card {
+        margin-bottom: 0;
+      }
+
+      .custom-memory small {
+        color: rgba(255, 255, 255, 0.7);
+        font-style: italic;
+        display: block;
+        margin-top: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .memory-timeline::before {
+          left: 20px;
+        }
+
+        .timeline-date {
+          left: 20px;
+          transform: translateX(0);
+          padding: 8px 15px;
+          font-size: 0.9em;
+        }
+
+        .timeline-content {
+          width: calc(100% - 60px);
+          margin-left: 60px !important;
+        }
+
+        .custom-memories {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </body>
+</html>

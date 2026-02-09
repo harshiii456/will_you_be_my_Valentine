@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Valentine ❤️</title>
+    <link rel="stylesheet" href="./public/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </head>
+  <body>
+    <div class="floating-hearts"></div>
+    <div class="sparkles"></div>
+    
+    <!-- Navigation Menu -->
+    <nav class="navigation">
+      <div class="nav-container">
+        <h2 class="nav-title">💕 Our Love Story</h2>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="love-letters.html" class="nav-link">Love Letters</a></li>
+          <li><a href="memories.html" class="nav-link">Memories</a></li>
+          <li><a href="future-plans.html" class="nav-link">Future Plans</a></li>
+          <li><a href="love-quiz.html" class="nav-link">Love Quiz</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="love-countdown">
+        <h3>Days until Valentine's Day: <span id="countdown"></span></h3>
+      </div>
+      <div class="banner-gif">
+        <img id="banner" src="./public/images/mid.gif" alt="banner" />
+      </div>
+      <h1 id="question-heading">Will you be my valentine?</h1>
+      <div class="buttons">
+        <button id="yes-button"><p>Yes</p></button>
+        <button id="no-button"><p>No</p></button>
+      </div>
+      <div class="message">
+        <h2 id="success-message">Yepppie, see you sooonnn :3</h2>
+        <div class="love-gallery" id="love-gallery" style="display: none;">
+          <h3>Our Memories Together 💕</h3>
+          <div class="gallery-grid">
+            <div class="memory-card">
+              <i class="fas fa-heart"></i>
+              <p>Every moment with you is precious</p>
+            </div>
+            <div class="memory-card">
+              <i class="fas fa-star"></i>
+              <p>You make my world brighter</p>
+            </div>
+            <div class="memory-card">
+              <i class="fas fa-infinity"></i>
+              <p>My love for you is endless</p>
+            </div>
+          </div>
+        </div>
+        <div class="love-playlist">
+          <button id="music-toggle" class="music-btn">
+            <i class="fas fa-music"></i> Play Our Song
+          </button>
+          <div class="volume-control">
+            <i class="fas fa-volume-up"></i>
+            <input type="range" id="volume-slider" min="0" max="100" value="50">
+          </div>
+          <audio id="love-song" loop>
+            <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+            <source src="https://www.bensound.com/bensound-music/bensound-sweet.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+      <div class="language-selector">
+        <label for="language-select">Choose Language:</label>
+        <select id="language-select" onchange="changeLanguage()">
+          <option value="english">English</option>
+          <option value="french">French</option>
+          <option value="thai">แบบไทย</option>
+        </select>
+      </div>
+    </div>
+    <script src="./public/js/script.js"></script>
+  </body>
+</html>
